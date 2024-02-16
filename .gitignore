@@ -1,0 +1,6 @@
+
+*.dll
+*.v2
+*.pdb
+\bin
+\obj

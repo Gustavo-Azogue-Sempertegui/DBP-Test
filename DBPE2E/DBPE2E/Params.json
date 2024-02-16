@@ -1,0 +1,6 @@
+{
+  "Params": {
+    "Environment": "Test",
+    "Browser": "Chrome"
+  }
+}
