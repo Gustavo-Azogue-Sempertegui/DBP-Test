@@ -20,7 +20,7 @@ namespace DBPE2E.PageObjects
             this.driverWait = new WebDriverWait(driver, new TimeSpan(0, 0, 15));
         }
 
-        protected void Open()
+        public void Open()
         {
             driver.Navigate().GoToUrl(Setup.Instance.BaseUrl);
         }

@@ -17,6 +17,7 @@ namespace DBPE2E.PageObjects
         private IWebElement yearInput => driverWait.Until(e => driver.FindElement(By.CssSelector("form input#year")));
         private IWebElement purchaseButton => driverWait.Until(e => driver.FindElement(By.XPath("//div[@style]//button[contains(@class, 'btn-primary')]")));
         private IWebElement closeButton => driverWait.Until(e => driver.FindElement(By.XPath("//div[@style]//button[contains(@class, 'btn-secondary')]")));
+        private IWebElement purchaseConfirmationModal => driverWait.Until(e => driver.FindElement(By.CssSelector("div.sweet-alert")));
 
         public PlaceOrderForm(WebDriver driver) : base(driver) { }
 
@@ -41,6 +42,16 @@ namespace DBPE2E.PageObjects
         public void closePlaceOrderForm()
         {
             closeButton.Click();
+        }
+
+        public string getConfirmationMessage()
+        {
+            return purchaseConfirmationModal.FindElement(By.CssSelector("h2")).Text;
+        }
+
+        public string getConfirmationData()
+        {
+            return purchaseConfirmationModal.FindElement(By.CssSelector("p")).Text;
         }
     }
 }
