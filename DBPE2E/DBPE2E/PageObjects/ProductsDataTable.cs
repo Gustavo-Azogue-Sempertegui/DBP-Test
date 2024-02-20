@@ -12,10 +12,7 @@ namespace DBPE2E.PageObjects
         private IWebElement filterPhones => driverWait.Until(e => driver.FindElement(By.XPath("//a[contains(text(), 'Phones')]")));
         private IWebElement filterLaptops => driverWait.Until(e => driver.FindElement(By.XPath("//a[contains(text(), 'Laptops')]")));
         private IWebElement filterMonitors => driverWait.Until(e => driver.FindElement(By.XPath("//a[contains(text(), 'Monitors')]")));
-        public ProductsDataTable(WebDriver driver) : base(driver)
-        {
-
-        }
+        public ProductsDataTable(WebDriver driver) : base(driver) {  }
         public void filterProducts(string filter)
         {
             switch (filter.ToUpper())
@@ -35,6 +32,11 @@ namespace DBPE2E.PageObjects
         public void selectProductByName(string productName)
         {
             driverWait.Until(e => driver.FindElement(By.XPath($"//div[@class = 'card-block']//a[contains(text(), '{productName}')]"))).Click();
+        }
+
+        public int getAmoutOfProducts()
+        {
+            return driverWait.Until(e => driver.FindElements(By.CssSelector("div#tbodyid>div"))).Count;
         }
     }
 }

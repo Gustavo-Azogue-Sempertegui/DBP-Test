@@ -1,4 +1,5 @@
 ﻿using DBPE2E.PageObjects;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,13 @@ namespace DBPE2E.StepDefinitions
         public void InitializeBrowser()
         {
             base_page.Open();
+        }
+
+        [Then("Validate Alert message as (.*)")]
+        public void ThenValidateAlertMessage(string message)
+        {
+            StringAssert.Contains(message, base_page.getAlertMessage());
+            base_page.closeAlertMessage();
         }
     }
 }

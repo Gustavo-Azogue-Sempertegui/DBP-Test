@@ -1,4 +1,5 @@
 ﻿using DBPE2E.Support;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -25,9 +26,14 @@ namespace DBPE2E.PageObjects
             driver.Navigate().GoToUrl(Setup.Instance.BaseUrl);
         }
 
-        protected string getAlertMessage()
+        public string getAlertMessage()
         {
             return this.driver.SwitchTo().Alert().Text;
+        }
+
+        public void closeAlertMessage()
+        {
+           this.driver.SwitchTo().Alert().Accept();
         }
     }
 }

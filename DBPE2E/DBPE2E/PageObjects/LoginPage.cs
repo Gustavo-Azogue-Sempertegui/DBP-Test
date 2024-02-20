@@ -13,6 +13,7 @@ namespace DBPE2E.PageObjects
         private IWebElement passInput => driverWait.Until(e => driver.FindElement(By.CssSelector("input#loginpassword")));
         private IWebElement closeButton => driverWait.Until(e => driver.FindElement(By.XPath("//div[@style]//button[contains(@class, 'btn-secondary')]")));
         private IWebElement loginButton => driverWait.Until(e => driver.FindElement(By.XPath("//div[@style]//button[contains(@class, 'btn-primary')]")));
+        private IWebElement navigationUserName => driverWait.Until(e => driver.FindElement(By.CssSelector("a#nameofuser")));
         public LoginPage(WebDriver driver) : base(driver) { }
 
         public void loginWithCredentials(string userName, string pass)
@@ -27,6 +28,11 @@ namespace DBPE2E.PageObjects
         public void closeLoginModal()
         {
             closeButton.Click();
+        }
+
+        public string ValidateUserLoggedIn()
+        {
+            return navigationUserName.Text;
         }
     }
 }
